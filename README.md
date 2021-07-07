@@ -1,2 +1,2 @@
-# university_schedule_bot
+# Telegram bot
 🤖 University Telegram Bot Schedule
