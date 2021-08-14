@@ -18,6 +18,6 @@ class ReplyKeyboard:
 
         for i in range(len(groups_by_faculty)):
             group_markup.add(*groups_by_faculty[i])
-        group_markup.add('Назад ⬅️')
+        group_markup.row('Назад ⬅️')
 
         self.bot.send_message(message.chat.id, 'Выбери группу.', reply_markup=group_markup)
