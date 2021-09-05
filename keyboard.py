@@ -11,9 +11,9 @@ class ReplyKeyboard:
         for i in range(len(faculties)):
             faculty_markup.row(*faculties[i])
         
-        self.bot.send_message(message.from_user.id, 'Выбери свой факультет.', 
+        self.bot.send_message(message.chat.id, 'Выбери свой факультет.', 
                               reply_markup=faculty_markup)
-
+                              
     def group_markup(self, message, groups_by_faculty):
         group_markup = telebot.types.ReplyKeyboardMarkup(True, False)
 
@@ -28,7 +28,7 @@ class ReplyKeyboard:
         display_markup = telebot.types.ReplyKeyboardMarkup(True, False)
 
         display_markup.row('Сегодня 📅', 'Завтра ➡️')
-        display_markup.row('Назад ⬅️')
+        display_markup.row('▶️ Эта неделя', '⏩ След. неделя')
 
         self.bot.send_message(message.chat.id, 'Выбери день.', 
                               reply_markup=display_markup)
