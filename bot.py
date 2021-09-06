@@ -5,7 +5,6 @@ import config
 import keyboard
 import request_schedule
 import message_handler
-import old_parser
 import database
 
 
@@ -13,7 +12,7 @@ TOKEN = config.TOKEN
 
 bot = telebot.TeleBot(TOKEN)
 reply_keyboard = keyboard.ReplyKeyboard(bot)
-parser = old_parser.Parser()
+parser = request_schedule.Parser()
 db = database.Database()
 
 faculties = ['РТС', 'ИКСС', 'ИСиТ', 'ФФП', 'ЦЭУБИ', 'СЦТ', 'ИНО', 'ИМ', 'СПБКТ']
@@ -45,7 +44,7 @@ def back_handler(message):
 @bot.message_handler(func=lambda message: 
                      message.text == 'Сегодня 📅', content_types=['text'])
 def today_handler(message):
-    date = old_parser.get_current_date() 
+    date = request_schedule.get_current_date() 
 
     try:
         group = db.select_group(message.chat.id)        # ИКПИ-71
@@ -62,7 +61,7 @@ def today_handler(message):
 @bot.message_handler(func=lambda message: 
                      message.text == 'Завтра ➡️', content_types=['text'])
 def tomorrow_handler(message):
-    date = old_parser.get_current_date() + datetime.timedelta(days=1) 
+    date = request_schedule.get_current_date() + datetime.timedelta(days=1) 
 
     try:
         group = db.select_group(message.chat.id)        # ИКПИ-71
