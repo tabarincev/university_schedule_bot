@@ -29,6 +29,7 @@ class ReplyKeyboard:
 
         display_markup.row('Сегодня 📅', 'Завтра ➡️')
         display_markup.row('▶️ Эта неделя', '⏩ След. неделя')
-
+        display_markup.row('Назад ⬅️')
+        
         self.bot.send_message(message.chat.id, 'Выбери день.', 
                               reply_markup=display_markup)
