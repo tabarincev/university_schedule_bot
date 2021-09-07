@@ -54,7 +54,7 @@ def today_handler(message):
         schedule = parser.get_schedule(group_id, date)
         
         bot.send_message(message.chat.id, schedule, parse_mode='Markdown')
-    except Exception:
+    except:
         start_handler(message)
 
     
