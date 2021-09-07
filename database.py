@@ -16,7 +16,7 @@ class Database:
         try:
             self.cursor.execute('INSERT INTO users (id, state, faculty, group_id) VALUES (%s, %s, %s, %s)', (user_id, 'start', None, None))
             self.connection.commit()
-        except Exception as e:
+        except:
             # пользователь уже был зарегистрирован
             self.update_state(user_id, 'start')
 
@@ -25,7 +25,7 @@ class Database:
             self.cursor.execute('UPDATE users SET state = %s WHERE id = %s', 
                                (new_state, user_id))
             self.connection.commit()
-        except Exception as e:
+        except:
             # нет пользователя с таким id
             self.connection.rollback()
 
